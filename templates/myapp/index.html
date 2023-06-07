@@ -1,0 +1,55 @@
+{% extends "myapp/base.html" %}
+
+{% block body %}
+<h3 class="m-4" >All Cars</h3>
+        <div class="row">
+            <div class="col-12">
+                {% if myapp %}
+                <div class="card text-white bg-secondary ms-4 me-4 mb-4">
+                    <div class="card-header"><i class="fa-solid fa-list fa-lg"></i>  Car Records</div>
+                    <div class="card-body">
+                      <h4 class="card-title"></h4>
+                      <p class="card-text">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                  <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <th scope="col">Company</th>
+                                    <th scope="col">Model</th>
+                                    <th scope="col">Year</th>
+                                    <th scope="col">Price</th>
+                                    
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  {% for car in myapp %}
+                                  <tr>
+                                    <th></th>
+                                    <th></th>
+                                    <th></th>
+                                    <td>{{ car.Company}}</td>
+                                    <td> {{car.model}}</td>
+                                    <td> {{car.year}}</td>
+                                    <td> {{car.Price}}</td>
+                                    
+                                  </tr>
+                                  {%  endfor %}
+
+                                  </tr>
+                                  
+                                </tbody>
+                              </table>
+                              <a class="nav-link" href="{% url 'add' %}" style="font-size: x-large; font-weight: bold;"><i class="fa-solid fa-plus fa-lg"></i>  Add Cars</a>
+                        </div>
+                      </p>
+                    </div>
+            </div>
+                {% else %}
+                    <h5 class="alert alert-primary ms-4 me-4">No Car Records</h5>
+                {% endif %}
+                
+        </div>
+{% endblock %}
